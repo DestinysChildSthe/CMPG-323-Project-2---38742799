@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ServiceLinker/locations/southafricanorth/connectors/ConnectionStringsAzuredatabase_7C68463B0E",
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/sqldbproject/databases/Project2DB",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:Azuredatabase",
+      "dynamicId": null
+    }
+  }
+}
