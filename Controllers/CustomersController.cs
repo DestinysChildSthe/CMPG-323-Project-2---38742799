@@ -6,9 +6,15 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ApiProject.Models;
+using Microsoft.AspNetCore.Authorization;
+using ApiProject.Authentication;
+using Humanizer;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ApiProject.Controllers
 {
+    [Authorize]
+    [Authorize(Roles = UserRoles.Admin)]
     [Route("api/[controller]")]
     [ApiController]
     public class CustomersController : ControllerBase
@@ -110,46 +116,63 @@ namespace ApiProject.Controllers
         }
 
         // PATCH: api/Customer/5
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchCustomer(int id, [FromBody] Customer customer)
-        {
-            if (id <= 0)
+         [HttpPatch("{id}")]
+
+        
+           /* public async Task<IActionResult> PatchCustomer(int id)
+         {
+             if (id <= 0)
+             {
+                 return BadRequest();
+             }
+
+             var existingCustomer = await _context.Customers.FindAsync(id);
+             if (existingCustomer == null)
+             {
+                 return NotFound();
+             }
+
+              if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
+           
 
-            var existingCustomer = await _context.Customers.FindAsync(id);
-            if (existingCustomer == null)
-            {
-                return NotFound();
-            }
+            /* // Update the customer data
+             existingCustomer.CustomerId = customer.CustomerId;
+             existingCustomer.CustomerTitle = customer.CustomerTitle;
+             existingCustomer.CustomerName = customer.CustomerName;
+             existingCustomer.CustomerSurname = customer.CustomerSurname;
+             existingCustomer.CellPhone = customer.CellPhone;
 
-            // Update the customer data
-            existingCustomer.CustomerId = customer.CustomerId;
-            existingCustomer.CustomerTitle = customer.CustomerTitle;
-            existingCustomer.CustomerName = customer.CustomerName;
-            existingCustomer.CustomerSurname = customer.CustomerSurname;
-            existingCustomer.CellPhone = customer.CellPhone;
+             //Project2DBContext.Update(existingCustomer);
+             await _context.SaveChangesAsync();
 
-            //Project2DBContext.Update(existingCustomer);
-            await _context.SaveChangesAsync();
+             return Ok();
 
-            return Ok();
+         }*/
 
-        }
+       
+       
+        
+ 
+
+
+
+
 
 
         // DELETE: api/Customers/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCustomer(short id)
-        {
-            if (_context.Customers == null)
-            {
-                return NotFound();
-            }
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer == null)
-            {
+{
+    if (_context.Customers == null)
+    {
+        return NotFound();
+    }
+    var customer = await _context.Customers.FindAsync(id);
+    if (customer == null)
+    {
                 return NotFound();
             }
 

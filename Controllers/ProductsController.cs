@@ -6,9 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ApiProject.Models;
+using Microsoft.AspNetCore.Authorization;
+using ApiProject.Authentication;
 
 namespace ApiProject.Controllers
 {
+    [Authorize]
+    [Authorize(Roles = UserRoles.Admin)]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
