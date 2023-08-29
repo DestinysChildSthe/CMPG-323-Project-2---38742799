@@ -109,7 +109,7 @@ namespace ApiProject.Controllers
             return CreatedAtAction("GetProduct", new { id = product.ProductId }, product);
         }
 
-       /* // PATCH: api/Product
+        // PATCH: api/Product
         [HttpPatch("{id}")]
         public async Task<IActionResult> PatchProduct(int id, [FromBody] Product product)
         {
@@ -135,7 +135,7 @@ namespace ApiProject.Controllers
             await _context.SaveChangesAsync();
 
             return Ok();
-        }*/
+        }
        
 
         // DELETE: api/Products/5

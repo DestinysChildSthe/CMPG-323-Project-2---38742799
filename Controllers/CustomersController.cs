@@ -109,7 +109,7 @@ namespace ApiProject.Controllers
             return CreatedAtAction("GetCustomer", new { id = customer.CustomerId }, customer);
         }
 
-        /*// PATCH: api/Customer/5
+        // PATCH: api/Customer/5
         [HttpPatch("{id}")]
         public async Task<IActionResult> PatchCustomer(int id, [FromBody] Customer customer)
         {
@@ -136,7 +136,7 @@ namespace ApiProject.Controllers
 
             return Ok();
 
-        }*/
+        }
 
 
         // DELETE: api/Customers/5
