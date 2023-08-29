@@ -109,8 +109,8 @@ namespace ApiProject.Controllers
             return CreatedAtAction("GetCustomer", new { id = customer.CustomerId }, customer);
         }
 
-       // PATCH: api/Customers/5
-      /* [HttpPatch("{id}")]
+        /*// PATCH: api/Customer/5
+        [HttpPatch("{id}")]
         public async Task<IActionResult> PatchCustomer(int id, [FromBody] Customer customer)
         {
             if (id <= 0)
@@ -135,8 +135,8 @@ namespace ApiProject.Controllers
             await _context.SaveChangesAsync();
 
             return Ok();
-        }*/
 
+        }*/
 
 
         // DELETE: api/Customers/5

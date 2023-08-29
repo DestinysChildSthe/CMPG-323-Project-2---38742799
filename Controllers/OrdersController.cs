@@ -109,7 +109,8 @@ namespace ApiProject.Controllers
             return CreatedAtAction("GetOrder", new { id = order.OrderId }, order);
         }
 
-       /* [HttpPatch("{id}")]
+       /* // Order: api/Orders
+        [HttpPatch("{id}")]
         public async Task<IActionResult> PatchProduct(int id, [FromBody] Order order)
         {
             if (id <= 0)
@@ -123,14 +124,14 @@ namespace ApiProject.Controllers
                 return NotFound();
             }
 
-            // Update the customer data
+            // Update the data data
             existingOrder.OrderId = order.OrderId;
             existingOrder.OrderDate = order.OrderDate;
             existingOrder.CustomerId = order.CustomerId;
             existingOrder.DeliveryAddress = order.DeliveryAddress;
 
 
-            //Project2DBContext.Update(existingCustomer);
+           
             await _context.SaveChangesAsync();
 
             return Ok();
