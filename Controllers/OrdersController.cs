@@ -10,8 +10,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ApiProject.Controllers
 {
-    [Authorize]
-    [Route("api/[controller]")]
+   // [Authorize]
+    //Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase
     {

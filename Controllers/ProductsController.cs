@@ -11,8 +11,8 @@ using ApiProject.Authentication;
 
 namespace ApiProject.Controllers
 {
-    [Authorize]
-    [Authorize(Roles = UserRoles.Admin)]
+    //[Authorize]
+    //[Authorize(Roles = UserRoles.Admin)]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase

@@ -13,8 +13,8 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ApiProject.Controllers
 {
-    [Authorize]
-    [Authorize(Roles = UserRoles.Admin)]
+    //[Authorize]
+    //[Authorize(Roles = UserRoles.Admin)]
     [Route("api/[controller]")]
     [ApiController]
     public class CustomersController : ControllerBase

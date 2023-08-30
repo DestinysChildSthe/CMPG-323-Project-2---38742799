@@ -1,4 +1,4 @@
-using JWTAuthentication.Authentication;
+using ApiProject.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,16 +15,15 @@ using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Linq;
-using ApiProject.Models;
-using ApiProject.Authentication;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<Project2DBContext>(options => options.UseSqlServer("Persist Security Info=False;User ID=projectadmin;Password=CMPG@323;Initial Catalog=Project2DB;Data Source=sqldbproject.database.windows.net"));
+
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("name=ConnectionStrings:ConnStr"));
 
 // For Identity  
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -48,9 +47,10 @@ builder.Services.AddAuthentication(options =>
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidateLifetime = true,
-                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
-                    ValidAudience = builder.Configuration["Jwt:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+                    ValidIssuer = builder.Configuration["Jwt:ValidIssuer"],
+                    ValidAudience = builder.Configuration["Jwt:ValidAudience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]))
+
                 };
             });
 
@@ -83,7 +83,7 @@ builder.Services.AddSwaggerGen(c =>
 
     // Require the Bearer token for all API operations
     var securityRequirement = new OpenApiSecurityRequirement
-   {
+    {
         {
             new OpenApiSecurityScheme
             {
@@ -103,12 +103,6 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-
-
-/*// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();*/
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -122,10 +116,8 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
-
 IConfiguration configuration = app.Configuration;
 IWebHostEnvironment environment = app.Environment;
-
 
 app.MapControllers();
 
