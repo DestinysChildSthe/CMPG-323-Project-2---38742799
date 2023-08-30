@@ -116,41 +116,43 @@ namespace ApiProject.Controllers
         }
 
         // PATCH: api/Customer/5
-         [HttpPatch("{id}")]
-
-        
-           /* public async Task<IActionResult> PatchCustomer(int id)
-         {
-             if (id <= 0)
-             {
-                 return BadRequest();
-             }
-
-             var existingCustomer = await _context.Customers.FindAsync(id);
-             if (existingCustomer == null)
-             {
-                 return NotFound();
-             }
-
-              if (!ModelState.IsValid)
+        [HttpPatch("{id}")]
+         public async Task<IActionResult> PatchCustomer(int id, [FromBody] Customer updatedcustomer)
+        {
+            if (id <= 0)
             {
-                return BadRequest(ModelState);
+                return BadRequest();
             }
-           
+
+            var existingCustomer = await _context.Customers.FindAsync(id);
+            if (existingCustomer == null)
+            {
+                return NotFound();
+            }
+
+            // Update the customer data
+            existingCustomer.CustomerId = updatedcustomer.CustomerId;
+            existingCustomer.CustomerTitle = updatedcustomer.CustomerTitle;
+            existingCustomer.CustomerName = updatedcustomer.CustomerName;
+            existingCustomer.CustomerSurname = updatedcustomer.CustomerSurname;
+            existingCustomer.CellPhone = updatedcustomer.CellPhone;
+
+            
+        
 
             /* // Update the customer data
              existingCustomer.CustomerId = customer.CustomerId;
              existingCustomer.CustomerTitle = customer.CustomerTitle;
              existingCustomer.CustomerName = customer.CustomerName;
              existingCustomer.CustomerSurname = customer.CustomerSurname;
-             existingCustomer.CellPhone = customer.CellPhone;
+             existingCustomer.CellPhone = customer.CellPhone;*/
 
              //Project2DBContext.Update(existingCustomer);
              await _context.SaveChangesAsync();
 
              return Ok();
 
-         }*/
+         }
 
        
        

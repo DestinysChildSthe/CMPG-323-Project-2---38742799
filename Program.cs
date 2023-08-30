@@ -26,7 +26,7 @@ builder.Services.AddControllers();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 //builder.Services.AddDbContext<Project2DBContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("name=ConnectionStrings:ConnStr"));
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Persist Security Info=False;User ID=projectadmin;Password=CMPG@323;Initial Catalog=Project2DB;Data Source=sqldbproject.database.windows.net"));
 
 // For Identity  
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -70,7 +70,7 @@ builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Project", Version = "v1" });
 
     // Define the Bearer token security scheme
     var securityScheme = new OpenApiSecurityScheme
@@ -113,6 +113,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     
 }
+else
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "API Project");
+        options.RoutePrefix = string.Empty;
+    });
+}
+
 
 app.UseHttpsRedirection();
 

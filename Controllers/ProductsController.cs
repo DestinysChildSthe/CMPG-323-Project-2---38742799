@@ -53,6 +53,33 @@ namespace ApiProject.Controllers
             return product;
         }
 
+
+        // GET: api/OrderDetails/5/products
+        [HttpGet("{orderId}/products")]
+        public async Task<ActionResult<Product>> GetProductsForOrder(short id)
+        {
+            //var order = _context.OrderDetails.Include(od => od.Products)
+               // .FirstOrDefault(od => od.OrderId == orderId);
+
+            if (_context.Products == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+          
+
+            return product;
+        }
+
+
+
+
         // PUT: api/Products/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -115,7 +142,7 @@ namespace ApiProject.Controllers
 
         // PATCH: api/Product
         [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchProduct(int id, [FromBody] Product product)
+        public async Task<IActionResult> PatchProduct(int id, [FromBody] Product updatedproduct)
         {
             if (id <= 0)
             {
@@ -128,11 +155,11 @@ namespace ApiProject.Controllers
                 return NotFound();
             }
 
-            // Update the customer data
-            existingProduct.ProductId = product.ProductId;
-            existingProduct.ProductName = product.ProductName;
-            existingProduct.ProductDescription = product.ProductDescription;
-            existingProduct.UnitsInStock = product.UnitsInStock;
+            // Update the product data
+            existingProduct.ProductId = updatedproduct.ProductId;
+            existingProduct.ProductName = updatedproduct.ProductName;
+            existingProduct.ProductDescription = updatedproduct.ProductDescription;
+            existingProduct.UnitsInStock = updatedproduct.UnitsInStock;
             
 
             //Project2DBContext.Update(existingCustomer);
@@ -165,6 +192,22 @@ namespace ApiProject.Controllers
         private bool ProductExists(short id)
         {
             return (_context.Products?.Any(e => e.ProductId == id)).GetValueOrDefault();
+        }
+
+        // GET: api/Products/order/5
+        [HttpGet("product/{productId}")]
+        public IActionResult GetProductsForOrder(int orderId)
+        {
+            var products = _context.Orders
+                .Where(product => product.OrderId == orderId)
+                .ToList();
+
+            if (products.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(products);
         }
     }
 }

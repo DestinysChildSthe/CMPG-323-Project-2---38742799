@@ -111,9 +111,9 @@ namespace ApiProject.Controllers
             return CreatedAtAction("GetOrder", new { id = order.OrderId }, order);
         }
 
-        // Order: api/Orders
+        // PATCH: api/Orders
         [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchProduct(int id, [FromBody] Order order)
+        public async Task<IActionResult> PatchProduct(int id, [FromBody] Order updatedorder)
         {
             if (id <= 0)
             {
@@ -126,11 +126,11 @@ namespace ApiProject.Controllers
                 return NotFound();
             }
 
-            // Update the data data
-            existingOrder.OrderId = order.OrderId;
-            existingOrder.OrderDate = order.OrderDate;
-            existingOrder.CustomerId = order.CustomerId;
-            existingOrder.DeliveryAddress = order.DeliveryAddress;
+            // Update the order data
+            existingOrder.OrderId = updatedorder.OrderId;
+            existingOrder.OrderDate = updatedorder.OrderDate;
+            existingOrder.CustomerId = updatedorder.CustomerId;
+            existingOrder.DeliveryAddress = updatedorder.DeliveryAddress;
 
 
            
@@ -162,6 +162,22 @@ namespace ApiProject.Controllers
         private bool OrderExists(short id)
         {
             return (_context.Orders?.Any(e => e.OrderId == id)).GetValueOrDefault();
+        }
+
+        // GET: api/Orders/customer/5
+        [HttpGet("customer/{customerId}")]
+        public IActionResult GetOrdersForCustomer(int customerId)
+        {
+            var orders = _context.Orders
+                .Where(order => order.CustomerId == customerId)
+                .ToList();
+
+            if (orders.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(orders);
         }
     }
 }
