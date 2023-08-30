@@ -23,6 +23,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+//builder.Services.AddDbContext<Project2DBContext>(options => options.UseSqlServer(connectionString));
+
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("name=ConnectionStrings:ConnStr"));
 
 // For Identity  
@@ -108,6 +111,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    
 }
 
 app.UseHttpsRedirection();
@@ -120,5 +124,6 @@ IConfiguration configuration = app.Configuration;
 IWebHostEnvironment environment = app.Environment;
 
 app.MapControllers();
+
 
 app.Run();
