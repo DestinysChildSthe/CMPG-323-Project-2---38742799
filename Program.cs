@@ -15,6 +15,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Linq;
+using ApiProject.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,7 +26,7 @@ builder.Services.AddControllers();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 //builder.Services.AddDbContext<Project2DBContext>(options => options.UseSqlServer(connectionString));
-
+builder.Services.AddDbContext<Project2DBContext>(options => options.UseSqlServer("Persist Security Info=False;User ID=projectadmin;Password=CMPG@323;Initial Catalog=Project2DB;Data Source=sqldbproject.database.windows.net"));
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Persist Security Info=False;User ID=projectadmin;Password=CMPG@323;Initial Catalog=Project2DB;Data Source=sqldbproject.database.windows.net"));
 
 // For Identity  
