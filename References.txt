@@ -1,0 +1,15 @@
+References:
+
+-	amiry jdamiry jd                    27k3030 gold badges116116 silver badges215215 bronze badges, NkosiNkosi                    236k3535 gold badges426426 silver badges471471 bronze badges and Tushar LadvaTushar Ladva                    122 bronze badges (1965) Using apicontrollerattribute without using routeattribute, Stack Overflow. Available at: https://stackoverflow.com/questions/53037126/using-apicontrollerattribute-without-using-routeattribute (Accessed: 30 August 2023). 
+-	ayyyeeeayyyeee                    32311 gold badge22 silver badges66 bronze badges et al. (1964) Build failed. check the output window for more details - C# publishing fails but build succeeds, Stack Overflow. Available at: https://stackoverflow.com/questions/51566065/build-failed-check-the-output-window-for-more-details-c-sharp-publishing-fail (Accessed: 31 August 2023). 
+-	Connection was denied since Deny Public Network Access is set Yes- Microsoft SQL Server, Error:47073 (2021). YouTube. 8 September. Available at: https://www.youtube.com/watch?v=tNNSA4ml6AA (Accessed: 30 August 2023). 
+-	embedded.kyleembedded.kyle                    11k55 gold badges3737 silver badges5656 bronze badges et al. (1959) Web deployment task failed. could not connect...server did not respond, Stack Overflow. Available at: https://stackoverflow.com/questions/11796838/web-deployment-task-failed-could-not-connect-server-did-not-respond (Accessed: 31 August 2023). 
+-	Enyinnaya, E. et al. (1966) Error while validating the service descriptor ’ServiceType: Microsoft.aspnetcore.identity.iuserclaimsprincipalfactory`1, Stack Overflow. Available at: https://stackoverflow.com/questions/62906939/error-while-validating-the-service-descriptor-servicetype-microsoft-aspnetcore (Accessed: 30 August 2023). 
+-	Fazio, J. and Akula, R.S. (2022) Unable to connect to azure SQL when Deny Public Network Access is enabled, Microsoft Q&A. Available at: https://learn.microsoft.com/en-us/answers/questions/786471/unable-to-connect-to-azure-sql-when-deny-public-ne (Accessed: 30 August 2023). 
+-	Fix Microsoft SQL Server Connection error 47073. (2022). 26 August. Available at: https://youtu.be/jj7rQqZM9rI?si=USCCE6A0nXmeviUj (Accessed: 30 August 2023). 
+-	How to fix EF Core Update Database Migration issue in VS 2022 ? (2022). YouTube. 8 July. Available at: https://www.youtube.com/watch?v=JX00Ez_33UI (Accessed: 30 August 2023). 
+-	Ibanez1408Ibanez1408                    4 et al. (1965) More than one dbcontext was found, Stack Overflow. Available at: https://stackoverflow.com/questions/52311053/more-than-one-dbcontext-was-found (Accessed: 30 August 2023). 
+-	Santos, R. (2021) .NET core - using entity framework core in a separate project, Medium. Available at: https://medium.com/oppr/net-core-using-entity-framework-core-in-a-separate-project-e8636f9dc9e5 (Accessed: 30 August 2023). 
+-	Create & deploy app services (2023). 25 May. Available at: https://youtu.be/xJFX_bGb6Uc?si=BMFg2Cq53hsf4DM3 (Accessed: 31 August 2023). 
+
+
